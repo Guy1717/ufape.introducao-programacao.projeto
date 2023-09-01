@@ -1,4 +1,5 @@
-from exceptions import InvalidScore
+class InvalidScore(Exception):
+    pass
 
 def getList(filename):
     file = open(filename, 'r')
@@ -71,7 +72,7 @@ def show(filename):
         i=1
         print('================================================================')
         for game in games:
-            print(f"[{i}]: {game['name']} | {game['year']} | {game['score']}")
+            print(f"[{i}]: Jogo: {game['name']} | Lançamento: {game['year']} | Nota: {game['score']}")
             i += 1
         print('================================================================')
     except FileNotFoundError:
@@ -171,11 +172,23 @@ def search(filename):
     # Score
     elif searchBy == 3:
         search = int(input('Pontuação do jogo para buscar: '))
+        found = []
+
+        for game in games:
+            if int(game['score']) == search:
+                index = games.index(game)
+                found.append(f"[{index+1}]: {game['name']} | {game['year']} | {game['score']}")
+        if len(found) > 0:
+            print("» Itens encontrados: ")
+            for game in found:
+                print(game)
+        else:
+            print("» Item inexistente")
         
 def run(filename):
     while(True):
-        print("1. Mostrar lista\n2. Registrar item\n3. Editar item\n4. Deletar item\n5. Buscar item (nome)\n0. Encerrar programa")
-        option = int(input('Selecione uma opção: '))
+        print("┊1. Mostrar lista\n┊2. Registrar item\n┊3. Editar item\n┊4. Deletar item\n┊5. Buscar item (nome)\n┊0. Encerrar programa")
+        option = int(input('\n✦ Selecione uma opção: '))
 
         if option == 0:
             exit()
