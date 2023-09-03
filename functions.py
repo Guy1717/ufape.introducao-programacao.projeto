@@ -187,7 +187,7 @@ def search(filename):
         
 def run(filename):
     while(True):
-        print("┊1. Mostrar lista\n┊2. Registrar item\n┊3. Editar item\n┊4. Deletar item\n┊5. Buscar item (nome)\n┊0. Encerrar programa")
+        print("\n┊1. Mostrar lista\n┊2. Registrar item\n┊3. Editar item\n┊4. Deletar item\n┊5. Buscar item (nome)\n┊0. Encerrar programa")
         option = int(input('\n✦ Selecione uma opção: '))
 
         if option == 0:
